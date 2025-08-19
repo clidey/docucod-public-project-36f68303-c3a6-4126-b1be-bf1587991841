@@ -1,0 +1,175 @@
+---
+title: "Configuration and Platform Integration"
+description: "Understand how the project uses environment files, hosting with Firebase, and integration with Formspree and Google Analytics. Provides an overview of the necessary configuration files and external services."
+---
+
+# Configuration and Platform Integration
+
+Welcome to the configuration and integration overview for the GDG Glasgow Landing Site. This guide walks you through the key configuration files that power the site’s behavior, hosting setup with Firebase, and integration with external services such as Formspree and Google Analytics. Understanding these elements will empower you to customize, deploy, and maintain the site efficiently.
+
+---
+
+## 1. Environment and Core Configuration Files
+
+### 1.1 `firebase.json` — Firebase Hosting Configuration
+
+This JSON file governs how Firebase serves and secures your site when deployed.
+
+- **Public directory:** Points to the output folder `dist` where the compiled site files live.
+- **Ignored files:** Prevents serving sensitive or development files like `firebase.json`, hidden files, and `node_modules`.
+- **Rewrites:** Routes all URL requests to `/index.html` to support the Single Page Application (SPA) nature.
+- **Caching headers:** Different max-age values for images (`jpg, jpeg, gif, png, ico`) and static assets (`css, js, fonts`) to improve load speed.
+- **Security headers:** HTTP headers including `X-Frame-Options`, `X-XSS-Protection`, `X-Content-Type-Options`, `Referrer-Policy`, and a whimsical `X-Powered-By`. These help to secure and standardize browser behavior.
+- **Clean URLs:** Enabled to omit `.html` extensions from URLs.
+
+#### Example: Key snippet from `firebase.json`
+```json
+{
+  "hosting": {
+    "public": "dist",
+    "rewrites": [{ "source": "**", "destination": "/index.html" }],
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|ico)",
+        "headers": [{ "key": "Cache-Control", "value": "max-age=2592000" }]
+      },
+      {
+        "source": "**/*.@(css|js|eot|otf|ttf|ttc|woff|font)",
+        "headers": [{ "key": "Cache-Control", "value": "max-age=1296000" }]
+      },
+      {
+        "source": "**",
+        "headers": [
+          { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+          { "key": "X-XSS-Protection", "value": "1;mode=block" },
+          { "key": "X-Content-Type-Options", "value": "nosniff" },
+          { "key": "Referrer-Policy", "value": "no-referrer" },
+          { "key": "X-Powered-By", "value": "Intel Pentium 3" }
+        ]
+      }
+    ],
+    "cleanUrls": true
+  }
+}
+```
+
+### 1.2 `.firebaserc` — Firebase Project Alias
+
+Defines the Firebase project the site connects to for deployment.
+
+```json
+{
+  "projects": {
+    "default": "gdg-glasgow-site"
+  }
+}
+```
+
+This ensures deployment commands target the correct Firebase instance.
+
+### 1.3 `.travis.yml` — Continuous Deployment Configuration
+
+The Travis CI configuration automates build and deployment:
+
+- Specifies Node.js version 8 for environment consistency.
+- Caches npm dependencies to speed up builds.
+- Runs build script (`npm run build:prod`) after dependencies installation.
+- Deploys the site to Firebase using a secure token upon successful build.
+
+This pipeline guarantees that once code is pushed and merged to the master branch, the site updates live without manual intervention.
+
+---
+
+## 2. Frontend Styling and Assets
+
+### 2.1 `src/assets/scss/app.scss`
+
+This SCSS file is the entry point for styling:
+
+- Imports the Bulma CSS framework, offering a responsive, mobile-friendly design foundation.
+- Loads Google Fonts, specifically the 'Fira Sans' font, and falls back to 'Roboto' and generic sans-serif.
+
+This enables consistent typography and layout styling across the site.
+
+### 2.2 Additional Styling Files
+
+- `src/assets/scss/bulma.scss` includes the entire Bulma framework definitions.
+- Fonts and icon libraries (like FontAwesome) are externally linked within the `index.html`.
+
+---
+
+## 3. External Integrations
+
+### 3.1 Formspree — Contact Form Handling
+
+The contact form in the modal is integrated with [Formspree](https://formspree.io) for backend-less form submissions.
+
+- The form in the modal posts directly to Formspree using the email address `gdgglasgow@gmail.com`.
+- This means no custom backend is needed to handle user queries.
+- Fields include **Name**, **Email**, and the **Query** text area, enforcing required inputs.
+
+**Benefit:** Anyone can contact the GDG Glasgow admins seamlessly without server infrastructure.
+
+### 3.2 Google Analytics
+
+- Integrated via a standard global gtag script loaded asynchronously.
+- The tracking ID `UA-121878737-1` is configured in `index.html`.
+- This tracks user behavior anonymously to help analyze site usage trends.
+
+**Tip:** Avoid modifying the tracking script unless updating to a new Analytics ID.
+
+---
+
+## 4. Site Structure and SPA Functionality
+
+### 4.1 Single Page Application Behavior
+
+- `firebase.json` rewrites all requests to `index.html` to enable client-side routing.
+- The frontend scripts (`src/index.html`, `src/app.js`, `src/main.js`) manage UI interactions:
+  - **Navigation bar** with event links and social icons.
+  - **Contact modal** opens/closes smoothly using JavaScript event listeners.
+  - **Image slider** cycles through gallery photos on the DevFest event.
+
+### 4.2 JavaScript Initialization
+
+- Code in `src/main.js` initializes UI behaviors after DOM loading:
+  - Modal show/hide on button clicks and ESC key.
+  - Automated image slider to create engaging visual content.
+
+**Best Practice:** Keep UI scripts modular and event-driven to ensure smooth interaction.
+
+---
+
+## 5. Deployment Workflow Summary
+
+1. **Local build:** Run the production build using `npm run build:prod` to generate optimized static files in `dist/`.
+2. **Firebase deployment:** Automatically triggered via Travis CI on pushes to the master branch.
+3. **Hosting:** Firebase serves the now-deployed single-page application with proper URLs and caching.
+
+**Verification:** After deployment, visit `https://gdg-glasgow.com/` to confirm the site reflects the latest updates.
+
+---
+
+## 6. Tips, Best Practices, and Troubleshooting
+
+- **Ensure Node.js v8 is installed** before running build scripts.
+- Validate Firebase CLI is installed and authenticated for manual commands if needed.
+- Keep your Firebase token (`FIREBASE_TOKEN`) secure; do not expose it publicly.
+- When updating styling, prefer modifying `app.scss` and leverage Bulma’s utility classes.
+- If the contact form stops working, verify Formspree service status and update the email address if changed.
+- Review Google Analytics data for unusual drops or spikes to troubleshoot tracking issues.
+
+---
+
+## 7. Additional Resources
+
+- [GDG Glasgow GitHub Repository](https://github.com/GDG-Glasgow/gdg-glasgow.com)
+- Related pages:
+  - [System Requirements & Prerequisites](../setup-and-installation/prerequisites)
+  - [Installing Dependencies](../setup-and-installation/installing-dependencies)
+  - [Running the Site Locally](../setup-and-installation/first-local-run)
+  - [Troubleshooting Common Issues](../initial-configuration-and-troubleshooting/troubleshooting-common-issues)
+
+---
+
+By mastering the configuration and integrations outlined here, you'll be well-positioned to manage and customize the GDG Glasgow Landing Site effectively, ensuring a robust, engaging, and smoothly deployed community portal.
