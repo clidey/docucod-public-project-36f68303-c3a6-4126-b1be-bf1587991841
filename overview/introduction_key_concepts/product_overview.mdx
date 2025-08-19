@@ -1,0 +1,162 @@
+---
+title: "What is GDG Glasgow Landing Site?"
+description: "Explore the product’s mission to serve as the digital hub for the GDG Glasgow community. Learn about its role in showcasing events, enabling communication, and fostering engagement through a modern single page application."
+---
+
+# What is GDG Glasgow Landing Site?
+
+## Your Digital Gateway to the GDG Glasgow Community
+
+The GDG Glasgow Landing Site is designed to be the definitive digital hub and entry point for developers, enthusiasts, and industry experts connected to the GDG Glasgow community. Built as a modern single page application, it serves as a vibrant platform to showcase events, facilitate communication, and foster ongoing engagement with a dynamic, user-friendly experience.
+
+---
+
+## At a Glance: What This Site Does for You
+
+- **Event Showcase:** Easily explore upcoming tech talks, study groups, and major conferences with visually rich presentations and seamless navigation.
+- **Community Connection:** Access essential contact options that empower you to reach out, collaborate, and get involved in GDG Glasgow activities.
+- **Engagement Made Simple:** Experience smooth interactivity including event image sliders and modal dialogs that keep you informed and connected without fuss.
+- **Modern Foundation:** Enjoy a fast, responsive site streamlined through a single page architecture and polished styling powered by Bulma CSS and Google Fonts.
+
+---
+
+## Understanding the GDG Glasgow Landing Site
+
+### What is this site?
+
+This landing site is a single page web application that functions as the main online presence for GDG Glasgow. It consolidates information about the group’s mission, events, and contact avenues into one accessible, navigable platform, acting as a digital ambassador for the community.
+
+### Why was it created?
+
+Before this site, discovering GDG Glasgow’s events and connecting with its members required scattered or manual tools. The landing site solves this by providing a centralized, up-to-date source of information that invites participation, nurtures community spirit, and highlights the vibrancy of Glasgow’s Google developer ecosystem.
+
+### What makes it unique?
+
+- **Single Page Application:** By loading dynamically without page refreshes, the site delivers a fluid and modern browsing experience.
+- **Seamless Event Presentation:** Through carefully crafted sections and interactive components like the event image slider, it creates a welcoming space where users can effortlessly stay in the loop.
+- **Built on Well-Established Tools:** It leverages best-in-class technologies such as Bulma CSS for a clean design, Google Fonts for great typography, and Formspree for contact forms without the need for a custom backend.
+
+---
+
+## Key Features & User Experience Highlights
+
+### 1. Event Highlights Section
+
+- Description of community events such as Evening Talks, Study Jams, and DevFests.
+- Interactive slider that cycles through images highlighting previous events, keeping the page lively and visual.
+
+### 2. Contact Modal Form
+
+- Easily accessible modal dialog triggered by the contact button in the navigation bar.
+- Form accepts user queries with required fields (Name, Email, Query) and leverages Formspree to handle submissions securely without backend maintenance.
+- Keyboard accessibility allowing the user to close the modal via the Escape key.
+
+### 3. Responsive Navigation
+
+- Fixed top navigation using Bulma styling for brand identity and quick access links (Events, Facebook, Meetup, Contact).
+- Iconography via FontAwesome enhances visual cues.
+
+### 4. Modern Styling
+
+- Clean and minimalistic design using Bulma.
+- Google’s Fira Sans font provides a contemporary, readable text style.
+
+### 5. Analytics Integration
+
+- Google Analytics embedded for site traffic insights without impacting user experience.
+
+---
+
+## Real-World Usage Scenario
+
+Imagine you are a developer new to Glasgow and interested in Google technologies. Upon visiting this site, you are greeted with a clear explanation of GDG Glasgow's mission and scope. You scroll to learn about upcoming events, viewing images of past meetups in an appealing slider that reflects the community’s energy. Questions arise, so you click the contact icon, instantly opening a friendly contact form. You send your query effortlessly, confident it will reach the organizers. This smooth path encourages you to participate actively.
+
+---
+
+## Tips & Best Practices
+
+- Use the contact modal for questions or to request event participation information — it’s streamlined and backed by a secure form processor.
+- Explore the event descriptions and visual slider to get a sense of community culture and what kinds of learning opportunities are available.
+- Bookmark or link directly to the site as the central resource to stay updated.
+
+---
+
+## Common Issues and Troubleshooting
+
+<AccordionGroup title="Frequently Encountered Issues">
+<Accordion title="Contact Form Does Not Submit">
+Check your internet connection and ensure JavaScript is enabled. The form uses Formspree, so interruptions in network connectivity could block submission.
+</Accordion>
+<Accordion title="Event Images Are Not Displaying or Not Changing">
+Make sure your browser supports JavaScript and no extensions block scripts. The event slider depends on JavaScript to rotate images every 3.5 seconds.
+</Accordion>
+<Accordion title="Modal Window Does Not Close Using Escape Key">
+Confirm focus is on the page and try clicking the close icon or clicking outside the modal area. Some browsers or assistive devices might behave differently; alternate closing methods are provided.
+</Accordion>
+</AccordionGroup>
+
+---
+
+## Getting Started Preview
+
+To get started,
+
+1. Simply visit [GDG Glasgow](https://gdg-glasgow.com) to access the landing site live.
+2. Navigate through the event descriptions and the event slider to explore past highlights.
+3. Click the envelope icon to ask any questions via the contact form.
+
+If interested in the underlying technology, the project’s GitHub repository at [https://github.com/GDG-Glasgow/gdg-glasgow.com](https://github.com/GDG-Glasgow/gdg-glasgow.com) offers full source code and build instructions.
+
+---
+
+## Summary
+
+The GDG Glasgow Landing Site is a thoughtfully crafted single page application that embodies the spirit and purpose of the GDG Glasgow community. Its primary role is to inform, engage, and connect users with the latest events and opportunities through a modern, approachable interface.
+
+For further exploration, consider reviewing the [Overview](#) and [Getting Started](#) guide sections in the documentation to deepen your understanding of system requirements and customizations.
+
+
+---
+
+## References
+
+- [GDG Glasgow Website GitHub Repository](https://github.com/GDG-Glasgow/gdg-glasgow.com)
+- [Bulma CSS Framework](https://bulma.io)
+- [Formspree Contact Forms](https://formspree.io)
+- [Google Fonts - Fira Sans](https://fonts.google.com/specimen/Fira+Sans)
+- [FontAwesome](https://fontawesome.com)
+
+---
+
+# Contact and Contribution
+
+Questions or enhancements? Feel free to submit issues or pull requests on GitHub, or use the contact form on the site to communicate directly with the GDG Glasgow team.
+
+---
+
+*This documentation does not cover backend implementation details but focuses on user intent and interaction with the landing page as designed.*
+
+---
+
+## Code Snippet: Initializing Modal Behavior (Simplified)
+
+```javascript
+// Opens the contact modal when 'contact' link is clicked
+contactLink.addEventListener('click', () => {
+  contactFormModal.classList.add('is-active');
+});
+
+// Closes the modal when close button or Escape key is pressed
+closeButton.addEventListener('click', () => {
+  contactFormModal.classList.remove('is-active');
+});
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape' || evt.key === 'Esc') {
+    contactFormModal.classList.remove('is-active');
+  }
+});
+```
+
+This snippet outlines how user interactions open and close the contact modal, enhancing accessibility and convenience.
+
+---
