@@ -1,0 +1,153 @@
+---
+title: "Running the Site Locally"
+description: "Guidance on how to start the local development server, view your local changes in real time, and validate your setup with a successful site launch."
+---
+
+# Running the Site Locally
+
+Get your local development environment up and running quickly by starting the GDG Glasgow Landing Site server. This guide walks you through launching the site on your machine, enabling live reload so you can instantly see your changes, and validating that everything is configured correctly with a successful local site launch.
+
+---
+
+## 1. Prerequisites Check
+
+Before starting the site locally, ensure you have already completed the following setup steps:
+
+- Installed Node.js (v8.x) and npm (Node Package Manager).
+- Cloned or forked the GDG Glasgow Landing Site repository to your local machine.
+- Installed all project dependencies via `npm install`.
+
+If you have not done these yet, please refer to the [System Requirements & Prerequisites](./prerequisites) and [Installing Dependencies](./installing-dependencies) documentation for detailed instructions.
+
+---
+
+## 2. Starting the Local Development Server
+
+You will use npm scripts to start a local server that hosts the site and watches for code changes:
+
+1. **Open your terminal or command prompt.**
+2. Navigate to the root directory of the cloned repository.
+3. Run the following command to start the development server:
+
+```bash
+npm run dev
+```
+
+- This script launches a lightweight local server serving the site at `http://localhost:8080` by default.
+- It also enables live reloading, so any changes you save in the codebase will immediately reflect in the browser.
+
+### What to Expect
+
+- Terminal output will confirm when the server starts successfully.
+- Your default browser may automatically open the site.
+
+<Tip>
+If your browser does not open automatically, manually navigate to http://localhost:8080 to view the site.
+</Tip>
+
+---
+
+## 3. Viewing Your Local Changes in Real Time
+
+Once the server is running:
+
+- Open the site in your browser at `http://localhost:8080`.
+- Modify any source files such as SCSS styles or JavaScript.
+- Save your changes.
+
+The local development server will detect these changes and refresh the page or update the styles immediately, allowing you to see your results in real time.
+
+<Tip>
+For best experience, use a modern browser with developer tools to inspect and debug as needed.
+</Tip>
+
+---
+
+## 4. Validating Your Setup
+
+Confirm your local server is working correctly with these checks:
+
+- When visiting `http://localhost:8080`, you should see the GDG Glasgow Landing Site homepage rendered correctly, featuring:
+  - The top navigation bar with GDG Glasgow branding and social links.
+  - The hero sections explaining what GDG Glasgow is and the types of events they host.
+  - The slideshow visible in the DevFest tile rotates images every few seconds.
+  - The contact modal opens when clicking the envelope icon in the navbar.
+
+- Open the browser developer console (usually F12 or Ctrl+Shift+I) and verify:
+  - No critical JavaScript errors appear.
+
+- Modify a simple element like the site title in the source and save it.
+- Observe the browser updates automatically without manual refresh.
+
+<Check>
+Successful page load and live reload confirms your local environment is correctly configured.
+</Check>
+
+---
+
+## 5. Troubleshooting Common Issues
+
+If the development server does not start or the site does not load properly, consider the following:
+
+- **Port in Use Error:** Another process might be using port 8080.
+  - Change the port by editing the development server configuration or temporarily stop the conflicting service.
+
+- **Missing Dependencies:** Run `npm install` again to ensure all packages are installed.
+
+- **Outdated Node.js Version:** Confirm your Node.js version is v8.x as required.
+
+- **Caching Issues:** Clear your browser cache or open an incognito window to bypass stale resources.
+
+---
+
+## 6. Stopping the Server
+
+To stop the local server:
+
+- Return to your terminal where the server is running.
+- Press `Ctrl + C` to terminate the process.
+
+---
+
+## 7. Next Steps
+
+After successfully running the site locally:
+
+- Start exploring and modifying the codebase.
+- Test changes with live reload.
+- When ready, follow contribution guidelines to create new features or fix issues.
+- Refer to the [Configuration and Platform Integration](./environment-configuration) page for customizing environment settings.
+
+For more robust validation, also consult the [Quick Validation Checklist](./quick-validation) and [Troubleshooting Common Issues](./troubleshooting-common-issues).
+
+---
+
+## Summary
+Running the site locally empowers you to rapidly develop and preview your changes in a true development environment before deployment. This guide ensures you can start the local server smoothly, enjoy instant feedback via live reload, and confidently verify your setup is sound.
+
+If you encounter issues, the troubleshooting tips can help you quickly recover and continue your progress.
+
+---
+
+## Helpful Commands Overview
+
+| Command            | Description                                      |
+|--------------------|--------------------------------------------------|
+| `npm run dev`      | Starts the local development server with live reload |
+| `npm install`      | Installs project dependencies required for the server |
+| `Ctrl + C`         | Stops the running server process                   |
+
+---
+
+## Additional Resources
+
+- [GDG Glasgow README](https://github.com/GDG-Glasgow/gdg-glasgow.com/blob/main/README.md) for full project overview and contributing info.
+- [System Requirements & Prerequisites](./prerequisites) to verify environment setup.
+- [Installing Dependencies](./installing-dependencies) for complete dependency installation steps.
+- [Configuration and Platform Integration](./environment-configuration) for environment customization.
+- [Troubleshooting Common Issues](./troubleshooting-common-issues) if you experience errors.
+
+
+---
+
+Feel free to reach out to the GDG Glasgow team via email at gdgglasgow@gmail.com or use the contact form on the site for help and feedback.
