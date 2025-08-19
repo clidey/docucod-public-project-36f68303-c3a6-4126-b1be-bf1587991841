@@ -1,0 +1,166 @@
+---
+title: "Installing Dependencies"
+description: "Step-by-step instructions for cloning the repository, installing third-party packages, and ensuring your environment is ready for development using npm."
+---
+
+# Installing Dependencies
+
+This guide walks you through the essential steps to clone the GDG Glasgow Landing Site repository, install all necessary third-party packages, and prepare your environment for local development using npm.
+
+---
+
+## 1. Prerequisites
+
+Before installing dependencies, ensure your system meets the following prerequisites:
+
+- **Node.js**: Version 8.x is required. Verify by running:
+  ```bash
+  node -v
+  ```
+- **npm**: Comes bundled with Node.js. Confirm installation with:
+  ```bash
+  npm -v
+  ```
+- **Git**: Used to clone the repository. Check with:
+  ```bash
+  git --version
+  ```
+
+If any are missing or versions are incompatible, install or update them before proceeding.
+
+<Tip>
+Use the official [Node.js website](https://nodejs.org/en/) to download Node.js (v8.x) and npm, and [Git downloads](https://git-scm.com/downloads) for Git installation.
+</Tip>
+
+---
+
+## 2. Cloning the Repository
+
+Get the project's source code by cloning it from GitHub.
+
+### Steps:
+
+1. Open your terminal or command prompt.
+2. Navigate to the directory where you want to place the project.
+3. Clone the repository:
+   ```bash
+   git clone https://github.com/GDG-Glasgow/gdg-glasgow.com.git
+   ```
+4. Change to the project directory:
+   ```bash
+   cd gdg-glasgow.com
+   ```
+
+<Check>
+Ensure the `gdg-glasgow.com` directory appears and contains files like `README.md` and `package.json`.
+</Check>
+
+---
+
+## 3. Installing Dependencies Using npm
+
+The project uses npm to manage third-party packages and dependencies. Installing these is essential for the site to build and run locally.
+
+### Steps:
+
+1. Inside your project directory, run:
+   ```bash
+   npm install
+   ```
+   This command reads the `package.json` file and installs all required libraries into the `node_modules` folder.
+
+2. Wait until the installation completes successfully. You should see messages about installed packages.
+
+<Info>
+`npm install` must be run whenever dependencies change or when setting up the project for the first time.
+</Info>
+
+---
+
+## 4. Verification of Installation
+
+After installing dependencies, verify your environment is ready.
+
+### Simple Check:
+
+Run the following to confirm npm can access the installed packages:
+```bash
+npm run dev
+```
+This command starts the local development server (see [Running the Site Locally](/getting-started/setup-and-installation/first-local-run) for more details). If the server starts and you see messages like "Listening on port...", the environment is correctly set up.
+
+<Tip>
+If `npm run dev` fails, review errors. Missing or incompatible package versions often cause failures.
+</Tip>
+
+---
+
+## 5. Common Issues and Troubleshooting
+
+- **npm command not found**: Confirm Node.js and npm are installed and added to your system PATH.
+- **Permission errors during npm install**: Avoid running npm as root or administrator. Instead, fix permissions or use [nvm](https://github.com/nvm-sh/nvm) for managing Node.js.
+- **Outdated Node version**: Ensure Node.js is v8.x as required. Newer versions might create unexpected issues given the constraints.
+- **Network issues**: If npm install fails due to network, check your internet connection or proxy settings.
+
+<AccordionGroup title="Troubleshooting Common npm Installation Issues">
+<Accordion title="Package compatibility errors">
+Ensure you have Node.js v8.x installed; newer versions may cause dependency conflicts. Switch using tools like `nvm` if needed.
+</Accordion>
+<Accordion title="npm cache problems">
+Clear the npm cache by running:
+```bash
+npm cache clean --force
+```
+Then retry `npm install`.
+</Accordion>
+<Accordion title="Permission denied errors">
+Avoid running npm commands with `sudo` unless absolutely necessary. Fix permissions on your project directory or use a Node version manager.
+</Accordion>
+</AccordionGroup>
+
+---
+
+## 6. Next Steps
+
+- Proceed to run the site locally using `npm run dev` to start the development server.
+- Explore editing and contributing by creating a new branch for your features or fixes.
+- Consult the [System Requirements & Prerequisites](/getting-started/setup-and-installation/prerequisites) page to validate your setup.
+
+---
+
+## Summary
+The 'Installing Dependencies' page guides you to clone the GDG Glasgow Landing Site repository, install all required npm packages to your local environment, and verify that everything is set for development. It also helps troubleshoot common pitfalls during package installation.
+
+
+-----
+
+<Info>
+For detailed information about running the site, local server commands, and further configuration, see the [Running the Site Locally](/getting-started/setup-and-installation/first-local-run) and [System Requirements & Prerequisites](/getting-started/setup-and-installation/prerequisites) pages.
+</Info>
+
+---
+
+## Example Installation Commands
+```bash
+# Clone the repository
+ git clone https://github.com/GDG-Glasgow/gdg-glasgow.com.git
+
+# Change to the project directory
+cd gdg-glasgow.com
+
+# Install required dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+
+---
+
+## Additional Resources
+- [GDG Glasgow Landing Site GitHub Repository](https://github.com/GDG-Glasgow/gdg-glasgow.com)
+- [Node.js Official Downloads](https://nodejs.org/en/download/)
+- [npm Documentation](https://docs.npmjs.com/)
+- [Git Official Site](https://git-scm.com/)
+

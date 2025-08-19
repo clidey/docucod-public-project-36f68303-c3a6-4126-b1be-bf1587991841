@@ -1,0 +1,74 @@
+{
+  "background": {
+    "decoration": "gradient"
+  },
+  "colors": {
+    "dark": "#1E3A8A",
+    "light": "#60A5FA",
+    "primary": "#60A5FA"
+  },
+  "favicon": "/favicon.svg",
+  "fonts": {
+    "family": "Montserrat",
+    "format": "woff2",
+    "source": "https://fonts.gstatic.com/s/googlesansflex/v5/t5sJIQcYNIWbFgDgAAzZ34auoVyXkJCOvp3SFWJbN5hF8Ju1x6sKCyp0l9sI40swNJwGpVd4AZzz0v6lJ4qFXNZhGjLvDSkV4USKMo6qQzwliVdHAy9jxTDHg_ugnAakpwGc-cxgUqDCIUI.woff2"
+  },
+  "icons": {
+    "library": "fontawesome"
+  },
+  "logo": {
+    "dark": "./logo/logo.svg",
+    "light": "./logo/logo.svg"
+  },
+  "name": "GDG Glasgow Landing Site",
+  "navigation": {
+    "tabs": [
+      {
+        "groups": [
+          {
+            "group": "Introduction \u0026 Key Concepts",
+            "pages": [
+              "overview/introduction_key_concepts/product_overview",
+              "overview/introduction_key_concepts/value_proposition_use_cases",
+              "overview/introduction_key_concepts/core_concepts_terminology"
+            ]
+          },
+          {
+            "group": "Architecture \u0026 Features",
+            "pages": [
+              "overview/architecture_features/system_architecture",
+              "overview/architecture_features/feature_highlights",
+              "overview/architecture_features/ecosystem_integrations"
+            ]
+          }
+        ],
+        "tab": "Overview"
+      },
+      {
+        "groups": [
+          {
+            "group": "Setup \u0026 Installation",
+            "pages": [
+              "getting-started/setup-and-installation/prerequisites",
+              "getting-started/setup-and-installation/installing-dependencies",
+              "getting-started/setup-and-installation/first-local-run"
+            ]
+          },
+          {
+            "group": "Initial Configuration \u0026 Troubleshooting",
+            "pages": [
+              "getting-started/initial-configuration-and-troubleshooting/environment-configuration",
+              "getting-started/initial-configuration-and-troubleshooting/troubleshooting-common-issues",
+              "getting-started/initial-configuration-and-troubleshooting/quick-validation"
+            ]
+          }
+        ],
+        "tab": "Getting Started"
+      }
+    ]
+  },
+  "styling": {
+    "codeblocks": "dark",
+    "eyebrows": "breadcrumbs"
+  }
+}

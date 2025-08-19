@@ -1,0 +1,160 @@
+---
+title: "Quick Validation Checklist"
+description: "A concise checklist to confirm your setup is correct and everything is running as expected before you begin contributing or customizing the project."
+---
+
+# Quick Validation Checklist
+
+Before you start contributing to the GDG Glasgow Landing Site or customizing it for your needs, this checklist ensures your environment is correctly set up and the application runs as expected. Completing these checks will save time and prevent common configuration issues.
+
+---
+
+## 1. Environment Verification
+
+### Node.js Version
+Ensure you have Node.js installed with version 8.x, as required by the project configuration.
+
+```bash
+node -v
+# Expected output: v8.x.x
+```
+
+If you get a different version, please [download](https://nodejs.org/en/download/releases/) and install Node.js 8.x.
+
+### npm Cache and Packages
+Verify your npm cache is working and all dependencies install cleanly.
+
+```bash
+npm cache verify
+npm install
+```
+
+Look for any errors during `npm install`. If there are problems, clear the cache and retry:
+
+```bash
+npm cache clean --force
+npm install
+```
+
+
+## 2. Build and Test Run
+
+Use the same commands configured in `.travis.yml` to emulate the CI build locally and confirm a successful build.
+
+### Install Firebase Tools
+The CI setup installs `firebase-tools` before building. Run this manually:
+
+```bash
+npm install firebase-tools
+```
+
+### Build the Project for Production
+Build using the production script:
+
+```bash
+npm run build:prod
+```
+
+You should see the build output generated under the `/dist` directory without errors.
+
+### Serve or Preview Locally
+After build, preview the site locally by starting a simple static file server in the output directory.
+
+Example using `serve` (install if needed):
+
+```bash
+npm install -g serve
+serve dist
+```
+
+Open the served URL in your browser and verify the landing site appears correctly.
+
+
+## 3. Deployment Confirmation
+
+The project utilizes Firebase hosting for deployment. Confirm you're authenticated and ready to deploy:
+
+### Firebase Project Setup
+Make sure you have the Firebase CLI configured and the default project set to `gdg-glasgow-site`.
+
+Check active project:
+
+```bash
+firebase projects:list
+firebase use gdg-glasgow-site
+```
+
+### Environment Variable
+Ensure your shell has the `FIREBASE_TOKEN` environment variable set to authorize deployment.
+
+Set the token (replace with your actual token):
+
+```bash
+export FIREBASE_TOKEN="your_token_here"
+```
+
+### Deploy Manually
+Trigger deployment (this matches the `after_success` CI step):
+
+```bash
+firebase deploy --token=$FIREBASE_TOKEN
+```
+
+Confirm deployment succeeds and the site updates on https://gdg-glasgow.com.
+
+
+## 4. Functional Checks
+
+### Navigation and UI Elements
+- Open the site and verify the navigation bar loads and links function.
+- Ensure the contact form modal opens when clicking the envelope icon and can be closed.
+- Confirm event slideshows rotate images automatically every 3.5 seconds.
+
+### Assets and Styling
+- Confirm Bulma CSS styling is applied correctly.
+- The site uses the Fira Sans font from Google Fonts and FontAwesome icons.
+
+
+## 5. Common Pitfalls & Troubleshooting Tips
+
+<AccordionGroup title="Troubleshooting Common Issues">
+<Accordion title="npm install fails or hangs">
+- Ensure Node.js version is exactly v8.x.
+- Clear npm cache with `npm cache clean --force` and retry.
+- Delete `node_modules` and `package-lock.json` and run `npm install` again.
+</Accordion>
+<Accordion title="Build errors during npm run build:prod">
+- Check for missing dependencies or compilation errors.
+- Review the output logs for specific file errors.
+- Confirm `firebase-tools` is installed locally.
+</Accordion>
+<Accordion title="Firebase deploy fails with token error">
+- Verify `FIREBASE_TOKEN` environment variable is set and valid.
+- Run `firebase login:ci` to generate a fresh token if needed.
+- Confirm you have access to the `gdg-glasgow-site` Firebase project.
+</Accordion>
+<Accordion title="Site not loading after deployment">
+- Clear browser cache or try an incognito window.
+- Confirm `firebase.json` has correct hosting and rewrite rules.
+- Check Firebase hosting status on the console.
+</Accordion>
+</AccordionGroup>
+
+
+## 6. Summary
+
+By following this checklist, you confirm your development environment matches the production standards configured in CI and deployment workflows. This ensures your contributions integrate smoothly and the site runs reliably.
+
+---
+
+## Additional Resources
+
+- [.travis.yml Configuration](./.travis.yml) - Details the CI build and deployment steps.
+- [Firebase Hosting Settings](./firebase.json) - Hosting rules and caching headers.
+- [README.md](./README.md) - Full project setup and contribution guide.
+- [Environment Configuration Guide](../environment-configuration) - For detailed environment and integration setup.
+- [Troubleshooting Common Issues](../troubleshooting-common-issues) - Comprehensive help for setup problems.
+
+---
+
+For further assistance, visit the [GDG Glasgow GitHub Repository](https://github.com/GDG-Glasgow/gdg-glasgow.com) or contact the maintainers via the site contact form.

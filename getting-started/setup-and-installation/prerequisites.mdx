@@ -1,0 +1,161 @@
+---
+title: "System Requirements & Prerequisites"
+description: "Learn about the essential tools and system versions required before installing the GDG Glasgow site. Covers Node.js, npm, and Git requirements for a smooth development experience."
+---
+
+# System Requirements & Prerequisites
+
+Before setting up the GDG Glasgow Landing Site locally, ensure your development environment meets the essential tools and system versions outlined below. Satisfying these requirements guarantees a smooth installation and development experience.
+
+---
+
+## 1. Supported Node.js Version
+
+- The GDG Glasgow site is built using Node.js, specifically targeting version **8.x**.
+- You must have Node.js version 8 installed globally on your system.
+
+### How to check your Node.js version:
+
+```bash
+node -v
+```
+
+- Expected output should start with `v8` (e.g., `v8.17.0`).
+
+### Installing Node.js v8:
+
+- Visit the [official Node.js downloads page](https://nodejs.org/en/download/releases/) and select version 8.
+- Use Node Version Manager ([nvm](https://github.com/nvm-sh/nvm)) for easier management of multiple Node.js versions:
+
+```bash
+nvm install 8
+nvm use 8
+```
+
+<Tip>
+Although Node.js 8 is an older version, it matches the build environment specified in the project’s CI configuration (.travis.yml). Using the required version avoids build or runtime incompatibilities.
+</Tip>
+
+---
+
+## 2. npm (Node Package Manager) Requirements
+
+- npm is bundled with Node.js.
+- Use the npm version that comes with Node.js 8 to ensure compatibility.
+
+### Check npm version:
+
+```bash
+npm -v
+```
+
+- Typically, npm 5 or 6 accompanies Node 8.
+
+<Tip>
+If you encounter npm errors during dependency installation, ensure your npm version aligns with Node 8 or update npm appropriately using `npm install -g npm@5` or `npm install -g npm@6`.
+</Tip>
+
+---
+
+## 3. Git Version Control
+
+- Git is essential to clone the repository and manage the source.
+
+### Prerequisites:
+
+- Install Git version 2.x or higher.
+- Verify installation by running:
+
+```bash
+git --version
+```
+
+- Output should resemble `git version 2.x.x`.
+
+### Installing Git:
+
+- Download & install Git from [git-scm.com](https://git-scm.com/downloads).
+
+---
+
+## 4. Additional Tools & Environment
+
+### Development Environment
+- A modern terminal or command prompt to execute commands.
+- Sufficient disk space (~200MB) for repository and dependencies.
+
+### Network Access
+- Internet connection is required during setup to download Node packages for dependencies.
+- Ensure no firewall or proxy blocks npm or Git connections.
+
+---
+
+## Summary of Pre-Installation Checks
+
+| Requirement      | Recommended Version / Details            | Command to Verify                          |
+|------------------|----------------------------------------|-------------------------------------------|
+| Node.js          | v8.x (e.g., v8.17.0)                   | `node -v`                                 |
+| npm              | Compatible with Node 8 (npm 5 or 6)    | `npm -v`                                  |
+| Git              | v2.x or higher                         | `git --version`                           |
+| Internet Access   | Unrestricted access for downloads      | N/A                                       |
+
+---
+
+## Troubleshooting Common Prerequisite Issues
+
+<AccordionGroup title="Common Issues & Solutions">
+<Accordion title="Node.js Version Mismatch">
+- **Problem:** Output of `node -v` is not version 8.x.
+- **Solution:** Use `nvm` to switch Node versions or uninstall current Node and install v8.
+</Accordion>
+<Accordion title="npm Install Fails">
+- **Problem:** Dependency installation errors.
+- **Solution:** Clear npm cache with `npm cache clean --force`, ensure network is accessible, and try again.
+- Verify correct Node and npm versions.
+</Accordion>
+<Accordion title="Git Not Found">
+- **Problem:** `git` commands not recognized.
+- **Solution:** Install Git from the official site and restart your terminal.
+</Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+Once you have confirmed all system requirements and prerequisites, proceed to the setup and installation phase by following the instructions in the [Installing Dependencies](https://gdg-glasgow.com/getting-started/setup-and-installation/installing-dependencies) and [Running the Site Locally](https://gdg-glasgow.com/getting-started/setup-and-installation/first-local-run) pages.
+
+<Check>
+Make sure to clone the repository with Git before installing dependencies:
+
+```bash
+git clone https://github.com/GDG-Glasgow/gdg-glasgow.com.git
+cd gdg-glasgow.com
+```
+
+Then install Node modules:
+
+```bash
+npm install
+```
+
+</Check>
+
+---
+
+For a complete understanding of the system architecture and integration points, consider reviewing the [System Architecture Overview](https://gdg-glasgow.com/overview/architecture_features/system_architecture) and [Feature Overview](https://gdg-glasgow.com/overview/architecture_features/feature_highlights) pages.
+
+---
+
+# Additional Resources
+
+- [GDG Glasgow Main Website](https://gdg-glasgow.com/)
+- [GitHub Repository](https://github.com/GDG-Glasgow/gdg-glasgow.com)
+- [nvm (Node Version Manager) Documentation](https://github.com/nvm-sh/nvm)
+
+---
+
+With all prerequisites in place, you'll be positioned to build, run, and eventually contribute to the GDG Glasgow Landing Site efficiently and confidently.
+
+
+---

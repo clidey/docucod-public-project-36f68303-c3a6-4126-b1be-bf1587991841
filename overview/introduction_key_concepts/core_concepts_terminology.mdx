@@ -1,0 +1,105 @@
+---
+title: "Core Concepts and Terminology"
+description: "Get familiar with essential concepts such as 'single page application', 'event showcase', 'contact form (Formspree)', and 'continuous deployment', with concise definitions and where they appear in the site."
+---
+
+# Core Concepts and Terminology
+
+Welcome to the foundational guide for understanding the key concepts and terminology behind the GDG Glasgow Landing Site. This page equips you with clear, concise definitions of essential terms you’ll encounter throughout the site, helping you grasp how the site functions and where these concepts fit in.
+
+---
+
+## Why This Matters
+
+When navigating a technical community site like GDG Glasgow’s, understanding core terms helps you make the most of its features. Whether you’re an event attendee, contributor, or organizer, these concepts clarify how the platform works to meet your needs.
+
+---
+
+## Essential Concepts Explained
+
+### Single Page Application (SPA)
+A Single Page Application (SPA) is a modern web design approach used by the GDG Glasgow Landing Site. Instead of loading entire new pages for every interaction, the SPA dynamically updates the page content in-place. 
+
+**What this means for you:**
+- **Faster navigation** without full page reloads
+- **Smoother user experience** akin to a desktop app
+- **Continuous interaction** without losing context
+
+The SPA architecture ensures that as you browse events, check out news, or open the contact form, the site feels fluid and responsive, minimizing delays and distractions.
+
+### Event Showcase
+The Event Showcase on the site highlights GDG Glasgow’s events in an engaging, accessible way. It presents upcoming and past events, each with important details like dates, locations, and descriptions.
+
+**Where you see it:** The main navigation link labeled 'Events' takes you directly to this section.
+
+**Why it helps:**
+- Stay informed about talks, study jams, DevFests, and more
+- Easily find event details without hunting across third-party sites
+- Supports active community participation and planning
+
+### Contact Form (Formspree)
+GDG Glasgow uses Formspree to handle contact form submissions without building a dedicated backend server.
+
+**How this works:**
+- When you open the contact modal and submit your query, your message is sent directly through Formspree’s service to the GDG Glasgow email.
+- This setup simplifies the site’s architecture without compromising secure, reliable communication.
+
+**Why it matters to users:**
+- Instant access to reach organizers with questions or feedback
+- No delays or technical complexities in message delivery
+- A seamless contact experience embedded right within the site
+
+### Continuous Deployment
+Continuous Deployment is an automated software release process that GDG Glasgow employs via Travis CI and Firebase Hosting.
+
+**In practice:**
+- Every code change merged into the official GitHub repository triggers an automatic build.
+- After build success, the latest version of the site is deployed instantly to Firebase Hosting.
+
+**User benefits:**
+- You always experience the latest features and fixes without manual updates
+- Ensures a stable, up-to-date website for event announcements and resources
+- Supports quick turnaround from development to production
+
+---
+
+## How These Concepts Appear in the Site
+
+- **SPA Behavior:** Seamless transitions as you click navigation links, see event information, or interact with the contact modal, all handled in-browser without page refresh.
+- **Event Showcase:** Prominently featured under the 'Events' link in the navigation bar and supported visually with photos and clear descriptions.
+- **Contact Form Modal:** Accessed via the envelope icon on the navigation bar, popping up elegantly for message submissions.
+- **Continuous Deployment Insights:** Automated behind the scenes (see project’s GitHub and deployment pipeline) ensuring site reliability and freshness.
+
+---
+
+## Tips to Navigate and Make the Most of These Concepts
+
+- Whenever clicking events or navigation links, notice how the page updates instantly — that’s SPA technology enhancing your experience.
+- Use the contact form to send direct messages without expecting additional logging in or redirection.
+- Remember the events listed are refreshed regularly through automatic deployment workflows, so check back often for the most current information.
+
+---
+
+## Common Pitfalls and How to Avoid Them
+
+- **Expecting traditional page loads:** In an SPA, URLs and page content are managed dynamically; simply refreshing the browser might reload the whole app but navigating within the app won't.
+- **Assuming a backend-powered contact form:** Here, the contact form relies on a third-party service, so message delivery depends on their availability.
+- **Delayed visibility for new content:** Though continuous deployment is swift, there might be brief moments after deployment when content is propagating.
+
+---
+
+## Next Steps
+
+Now that you've grasped these core concepts and terminology, you are well-prepared to explore our [Product Overview](/overview/introduction_key_concepts/product_overview) for a high-level understanding of GDG Glasgow’s site features. For hands-on use cases and the value this site delivers, visit [Value Proposition & Use Cases](/overview/introduction_key_concepts/value_proposition_use_cases).
+
+---
+
+For a technical glance at how these concepts are implemented and integrated, consult [System Architecture Overview](/overview/architecture_features/system_architecture).
+
+---
+
+*Empower your GDG Glasgow experience by mastering the language and ideas powering our digital community hub.*
+
+---
+
+<Check>Please explore how these concepts shape your journey on the site and begin engaging with upcoming events or the contact form today.</Check>
