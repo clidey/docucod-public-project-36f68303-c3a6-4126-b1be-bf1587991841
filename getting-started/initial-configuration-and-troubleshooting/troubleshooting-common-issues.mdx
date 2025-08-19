@@ -1,0 +1,224 @@
+---
+title: "Troubleshooting Common Issues"
+description: "Solutions to the most frequent problems encountered during installation and first run. Offers quick fixes for npm errors, dependency conflicts, and local server issues."
+---
+
+# Troubleshooting Common Issues
+
+This page helps you resolve the most frequent problems encountered during installation and the first run of the GDG Glasgow Landing Site. It provides practical, quick fixes for common npm errors, dependency conflicts, and issues starting the local server.
+
+---
+
+## 1. npm Installation Errors
+
+When running `npm install`, you might see errors that prevent dependencies from installing correctly. Here's how to tackle them:
+
+### Common Causes
+- Outdated Node.js or npm versions
+- Network connectivity or proxy issues
+- Conflicts with existing modules or lock files
+
+### Step-by-Step Fixes
+
+1. **Verify Node.js and npm versions**
+   
+   ```bash
+   node -v
+   npm -v
+   ```
+
+   The GDG Glasgow site requires Node.js **v8.x**. If your versions differ, update accordingly.
+
+2. **Clear npm cache**
+   
+   Sometimes corrupted cache causes installation failures:
+
+   ```bash
+   npm cache clean --force
+   ```
+
+3. **Delete `node_modules` and lock files**
+
+   Remove existing dependencies to ensure a fresh install:
+
+   ```bash
+   rm -rf node_modules package-lock.json
+   ```
+
+4. **Run installation again**
+
+   ```bash
+   npm install
+   ```
+
+5. **Check for network issues**
+
+   If you’re behind a proxy or corporate firewall, configure npm proxy settings:
+
+   ```bash
+   npm config set proxy http://proxyaddress:port
+   npm config set https-proxy http://proxyaddress:port
+   ```
+
+   Alternatively, try installing with a different network.
+
+### Troubleshooting Tips
+- If `npm install` still fails, review the error log displayed for clues on missing packages or permissions.
+- Run npm commands with administrator privileges on Windows or use `sudo` on Unix systems if permission errors persist.
+- Consult the official [Node.js](https://nodejs.org/) and [npm](https://docs.npmjs.com/) troubleshooting guides for deeper issues.
+
+---
+
+## 2. Dependency Conflicts
+
+Conflicting dependency versions can cause `npm install` failures or unexpected behavior.
+
+### How to Identify
+- Errors mentioning version mismatches or peer dependency conflicts
+- Warnings in the terminal about incompatible versions
+
+### Resolution Steps
+
+1. **Review `package.json` dependencies**
+
+   Check for strict version pins or outdated packages.
+
+2. **Update dependencies carefully**
+
+   Use:
+   ```bash
+   npm update
+   ```
+
+3. **Manually adjust versions if necessary**
+
+   Change versions in `package.json` to compatible ones, then run `npm install` again.
+
+4. **Use `npm audit` to detect vulnerabilities**
+
+   ```bash
+   npm audit fix
+   ```
+
+   This will help fix known package issues.
+
+> <Tip>
+> Avoid manually forcing dependency installs or using `--force` flags without understanding the consequences, as it can break the site.
+> </Tip>
+
+---
+
+## 3. Local Server Won’t Start or Crashes
+
+After `npm install`, starting the development server with `npm run dev` should launch a local web server to preview the site. If this fails:
+
+### Check Node.js Version
+The site requires Node.js v8.x; newer or older versions might cause issues.
+
+### Typical Errors & Fixes
+
+- **Port already in use**
+  
+  Error: `EADDRINUSE` indicates the default port (usually 8080) is busy.
+
+  **Fix:**
+  
+  - Identify process blocking port, then terminate it.
+  
+  Unix:
+  ```bash
+  lsof -i :8080
+  kill -9 <PID>
+  ```
+  
+  Windows:
+  ```powershell
+  netstat -ano | findstr :8080
+  taskkill /PID <PID> /F
+  ```
+
+  Or change the port by modifying dev server config (advanced).
+
+- **Missing scripts in `package.json`**
+
+  Verify `npm run dev` is defined in your `package.json`. If missing, ensure you have the right repo clone and files.
+
+- **Syntax or build errors**
+
+  Look for error messages specifying missing modules or syntax problems. Fix by:
+  
+  - Reinstalling dependencies
+  - Ensuring the correct Node.js version
+
+### Verifying Server Startup
+- Upon successful start, the CLI should display running info, e.g., `Local server is running at http://localhost:8080`.
+- Open that URL in a browser and verify the GDG Glasgow Landing Site loads.
+
+### Troubleshooting Tips
+- Clear the terminal and rerun the start command to rule out transient issues.
+- Check for active firewalls or antivirus software blocking local server connections.
+
+---
+
+## 4. Contact Form Malfunction
+
+If messages sent through the site's contact modal fail to deliver:
+
+- Check your internet connection as the form uses Formspree, a third-party service.
+- Ensure the email address `gdgglasgow@gmail.com` configured for Formspree is active.
+- If the modal doesn’t open or submit:
+  
+  - Confirm JavaScript is enabled in the browser.
+  - Check the browser console for JavaScript errors.
+
+---
+
+## 5. General Best Practices
+
+- Always work in a clean clone environment when troubleshooting.
+- Follow the recommended Node.js and npm versions strictly.
+- Review [Prerequisites](https://gdg-glasgow.com/getting-started/setup-and-installation/prerequisites) and [Installing Dependencies](https://gdg-glasgow.com/getting-started/setup-and-installation/installing-dependencies) for detailed setup instructions.
+- Use the [Quick Validation Checklist](https://gdg-glasgow.com/getting-started/initial-configuration-and-troubleshooting/quick-validation) to verify your environment before proceeding.
+
+---
+
+## 6. When to Get Help
+
+If you cannot resolve an issue:
+
+- Review [GDG Glasgow GitHub repository issues](https://github.com/GDG-Glasgow/gdg-glasgow.com/issues) for similar problems.
+- Email the maintainers directly at `gdgglasgow@gmail.com`.
+- Include detailed error messages, your environment setup, and steps you followed.
+
+---
+
+## Summary
+This page addresses key common issues during setup:
+- npm install errors and fixes
+- Dependency conflict resolution
+- Local dev server start problems
+- Contact form troubleshooting
+
+Following these steps will help you overcome initial hurdles and get the GDG Glasgow Landing Site running smoothly.
+
+---
+
+### See Also
+- [System Requirements & Prerequisites](https://gdg-glasgow.com/getting-started/setup-and-installation/prerequisites)
+- [Installing Dependencies](https://gdg-glasgow.com/getting-started/setup-and-installation/installing-dependencies)
+- [Running the Site Locally](https://gdg-glasgow.com/getting-started/setup-and-installation/first-local-run)
+- [Quick Validation Checklist](https://gdg-glasgow.com/getting-started/initial-configuration-and-troubleshooting/quick-validation)
+
+
+---
+
+<CardGroup cols={2}>
+<Card title="Community Support">
+Reach out via GitHub issues or email for help.
+</Card>
+<Card title="Related Documentation">
+Explore installation and configuration guides for full setup.
+</Card>
+</CardGroup>
+
+
